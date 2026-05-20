@@ -1,0 +1,205 @@
+{
+  "source_file": "data/raw/final-cleaned-songs-csv.xls",
+  "rows": 5288,
+  "columns_original_count": 41,
+  "columns_cleaned_count": 41,
+  "column_mapping": [
+    {
+      "original": "song_name",
+      "cleaned": "song_name"
+    },
+    {
+      "original": "written_by",
+      "cleaned": "written_by"
+    },
+    {
+      "original": "performed_by",
+      "cleaned": "performed_by"
+    },
+    {
+      "original": "composed_by",
+      "cleaned": "composed_by"
+    },
+    {
+      "original": "lyrics_by",
+      "cleaned": "lyrics_by"
+    },
+    {
+      "original": "music_by",
+      "cleaned": "music_by"
+    },
+    {
+      "original": "courtesy_of",
+      "cleaned": "courtesy_of"
+    },
+    {
+      "original": "conducted_by",
+      "cleaned": "conducted_by"
+    },
+    {
+      "original": "under_license_from",
+      "cleaned": "under_license_from"
+    },
+    {
+      "original": "movie_title",
+      "cleaned": "movie_title"
+    },
+    {
+      "original": "song_url",
+      "cleaned": "song_url"
+    },
+    {
+      "original": "Released",
+      "cleaned": "released"
+    },
+    {
+      "original": "Recorded",
+      "cleaned": "recorded"
+    },
+    {
+      "original": "music_genre",
+      "cleaned": "music_genre"
+    },
+    {
+      "original": "Length",
+      "cleaned": "length"
+    },
+    {
+      "original": "Label",
+      "cleaned": "label"
+    },
+    {
+      "original": "Songwriter",
+      "cleaned": "songwriter"
+    },
+    {
+      "original": "Producer",
+      "cleaned": "producer"
+    },
+    {
+      "original": "Studio",
+      "cleaned": "studio"
+    },
+    {
+      "original": "adult",
+      "cleaned": "adult"
+    },
+    {
+      "original": "movie_genre",
+      "cleaned": "movie_genre"
+    },
+    {
+      "original": "imdb_id",
+      "cleaned": "imdb_id"
+    },
+    {
+      "original": "original_language",
+      "cleaned": "original_language"
+    },
+    {
+      "original": "overview",
+      "cleaned": "overview"
+    },
+    {
+      "original": "popularity",
+      "cleaned": "popularity"
+    },
+    {
+      "original": "production_company",
+      "cleaned": "production_company"
+    },
+    {
+      "original": "production_country",
+      "cleaned": "production_country"
+    },
+    {
+      "original": "release_date",
+      "cleaned": "release_date"
+    },
+    {
+      "original": "spoken_language",
+      "cleaned": "spoken_language"
+    },
+    {
+      "original": "status",
+      "cleaned": "status"
+    },
+    {
+      "original": "vote_average",
+      "cleaned": "vote_average"
+    },
+    {
+      "original": "Directed by",
+      "cleaned": "directed_by"
+    },
+    {
+      "original": "Screenplay by",
+      "cleaned": "screenplay_by"
+    },
+    {
+      "original": "Story by",
+      "cleaned": "story_by"
+    },
+    {
+      "original": "Produced by",
+      "cleaned": "produced_by"
+    },
+    {
+      "original": "Starring",
+      "cleaned": "starring"
+    },
+    {
+      "original": "movie_music_by",
+      "cleaned": "movie_music_by"
+    },
+    {
+      "original": "Running time",
+      "cleaned": "running_time"
+    },
+    {
+      "original": "Budget",
+      "cleaned": "budget"
+    },
+    {
+      "original": "movie_url",
+      "cleaned": "movie_url"
+    },
+    {
+      "original": "Written by",
+      "cleaned": "movie_written_by"
+    }
+  ],
+  "multi_value_columns": [
+    "written_by",
+    "performed_by",
+    "composed_by",
+    "lyrics_by",
+    "music_by",
+    "music_genre",
+    "songwriter",
+    "producer",
+    "movie_genre",
+    "original_language",
+    "production_company",
+    "production_country",
+    "spoken_language",
+    "directed_by",
+    "screenplay_by",
+    "story_by",
+    "produced_by",
+    "starring",
+    "movie_music_by",
+    "movie_written_by"
+  ],
+  "null_tokens_handled": [
+    "",
+    "nan",
+    "none",
+    "null",
+    "unknown"
+  ],
+  "output_files": [
+    "data/processed/soundtracks_clean.json",
+    "data/processed/columns_profile.json"
+  ]
+}

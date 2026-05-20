@@ -1,0 +1,233 @@
+{
+  "dataset": "soundtracks_clean",
+  "records": [],
+  "record_count": 0,
+  "structure": {
+    "song_name": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "written_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "performed_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "composed_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "lyrics_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "music_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "courtesy_of": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "conducted_by": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "under_license_from": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "movie_title": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "song_url": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "released": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "recorded": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "music_genre": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "length": {
+      "type": "integer",
+      "nullable": true,
+      "example": 0
+    },
+    "label": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "songwriter": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "producer": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "studio": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "adult": {
+      "type": "boolean",
+      "nullable": false,
+      "example": false
+    },
+    "movie_genre": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "imdb_id": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "original_language": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "overview": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "popularity": {
+      "type": "number",
+      "nullable": false,
+      "example": 0.0
+    },
+    "production_company": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "production_country": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "release_date": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "spoken_language": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "status": {
+      "type": "string",
+      "nullable": false,
+      "example": ""
+    },
+    "vote_average": {
+      "type": "integer",
+      "nullable": false,
+      "example": 0
+    },
+    "directed_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "screenplay_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "story_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "produced_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "starring": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "movie_music_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    },
+    "running_time": {
+      "type": "integer",
+      "nullable": true,
+      "example": 0
+    },
+    "budget": {
+      "type": "integer",
+      "nullable": true,
+      "example": 0
+    },
+    "movie_url": {
+      "type": "string",
+      "nullable": true,
+      "example": ""
+    },
+    "movie_written_by": {
+      "type": "array",
+      "items": "string",
+      "nullable": false,
+      "example": []
+    }
+  },
+  "notes": "Presentation file: no data rows, only field structure inferred from soundtracks_clean.json"
+}
