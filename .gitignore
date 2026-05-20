@@ -1,0 +1,7 @@
+# Generated RDF output
+output/generated.ttl
+
+# Raw input datasets (CSV / Excel)
+data/raw/*.csv
+data/raw/*.xls
+data/raw/*.xlsx
