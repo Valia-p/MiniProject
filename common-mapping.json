@@ -1,0 +1,1463 @@
+{
+  "baseIRI": "http://example.com/resource/",
+  "namespaces": {
+    "dbo": "http://dbpedia.org/ontology/",
+    "ex": "http://example.org/ontology/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "title"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "song_name",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "songWriter"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"written_by\"].value),\n  null,\n  \"http://example.org/songWriter/\" + cells[\"written_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "composer"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"composed_by\"].value),\n  null,\n  \"http://example.org/Composer/\" + cells[\"composed_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "artist"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"performed_by\"].value),\n  null,\n  \"http://example.org/MusicalArtist/\" + cells[\"performed_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "lyricsBy"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"lyrics_by\"].value),\n  null,\n  \"http://example.org/Lyricist/\" + cells[\"lyrics_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "musicBy"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"music_by\"].value),\n  null,\n  \"http://example.org/MusicArranger/\" + cells[\"music_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "courtesyOf"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"courtesy_of\"].value),\n  null,\n  \"http://example.org/CourtesyProvider/\" + cells[\"courtesy_of\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "conductedBy"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"conducted_by\"].value),\n  null,\n  \"http://example.org/Conductor/\" + cells[\"conducted_by\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "licensedBy"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"under_license_from\"].value),\n  null,\n  \"http://example.org/Licensor/\" + cells[\"under_license_from\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "partOfFilm"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"movie_title\"].value), \n  \"http://example.org/film/Unknown\", \n  \"http://example.org/film/\" + \n  cells[\"movie_title\"].value\n    .toLowercase()\n    .replace(\" \", \"_\")\n    .replace(/[^a-z0-9_]/, \"\")\n)\n",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"song_name\"].value), \n  \"http://example.org/song/Unknown\", \n  \"http://example.org/song/\" + \n  cells[\"song_name\"].value\n    .toLowercase()\n    .replace(\" \", \"_\")\n    .replace(/[^a-z0-9_]/, \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Song"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "written_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"written_by\"].value),\n  null,\n  \"http://example.org/songWriter/\" + cells[\"written_by\"].value.trim().replace(\" \", \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Songwriter"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "title"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "movie_title",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "filmAbstract"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "overview",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "filmBudget"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Budget",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "double"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "filmImdbId"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "imdb_id",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popularity"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "popularity",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "float"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "filmReleaseDate"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "release_date",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "date"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "status"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "status",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "adultOnly"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "adult",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "boolean"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "runtime"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Running time",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "double"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "voteAverage"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "vote_average",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "float"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "originalLanguage"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"original_language\"].value),\n  \"http://example.org/Language/Unknown\",\n  \"http://example.org/Language/\" + cells[\"original_language\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "spokenLanguage"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"spoken_language\"].value),\n  null,\n  \"http://example.org/Language/\" + cells[\"spoken_language\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "productionCompany"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"production_companies\"].value),\n  null,\n  \"http://example.org/Company/\" + cells[\"production_companies\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "productionCountry"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"production_countries\"].value),\n  null,\n  \"http://example.org/Country/\" + cells[\"production_countries\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ex",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasSong"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"song_name\"].value), \n  \"http://example.org/song/Unknown\", \n  \"http://example.org/song/\" + \n  cells[\"song_name\"].value\n    .toLowercase()\n    .replace(\" \", \"_\")\n    .replace(/[^a-z0-9_]/, \"\")\n)\n",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"movie_title\"].value), \n  \"http://example.org/film/Unknown\", \n  \"http://example.org/film/\" + \n  cells[\"movie_title\"].value\n    .toLowercase()\n    .replace(\" \", \"_\")\n    .replace(/[^a-z0-9_]/, \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Film"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "composed_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"composed_by\"].value),\n  null,\n  \"http://example.org/Composer/\" + cells[\"composed_by\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Composer"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "performed_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"performed_by\"].value),\n  null,\n  \"http://example.org/MusicalArtist/\" + cells[\"performed_by\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "MusicalArtist"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "lyrics_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"lyrics_by\"].value),\n  null,\n  \"http://example.org/Lyricist/\" + cells[\"lyrics_by\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Lyricist"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "music_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"music_by\"].value),\n  null,\n  \"http://example.org/MusicArranger/\" + cells[\"music_by\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "MusicArranger"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "courtesy_of",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"courtesy_of\"].value),\n  null,\n  \"http://example.org/CourtesyProvider/\" + cells[\"courtesy_of\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "CourtesyProvider"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "conducted_by",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"conducted_by\"].value),\n  null,\n  \"http://example.org/Conductor/\" + cells[\"conducted_by\"].value.trim().replace(\" \", \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Conductor"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "under_license_from",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"under_license_from\"].value),\n  null,\n  \"http://example.org/Licensor/\" + cells[\"under_license_from\"].value.trim().replace(\" \", \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ex",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Licensor"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "movie_genre",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"movie_genre\"].value),\n  null,\n  \"http://example.org/MovieGenre/\" + cells[\"movie_genre\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "MovieGenre"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "original_language",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"original_language\"].value),\n  \"http://example.org/Language/Unknown\",\n  \"http://example.org/Language/\" + cells[\"original_language\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Language"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "spoken_language",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"spoken_language\"].value),\n  null,\n  \"http://example.org/Language/\" + cells[\"spoken_language\"].value.trim().replace(\" \", \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Language"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "production_companies",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"production_companies\"].value),\n  null,\n  \"http://example.org/Company/\" + cells[\"production_companies\"].value.trim().replace(\" \", \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Company"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdf",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "production_countries",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"production_countries\"].value),\n  null,\n  \"http://example.org/Country/\" + cells[\"production_countries\"].value.trim().replace(\" \", \"\")\n)",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dbo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Country"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dbo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "genre"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(\n  isBlank(cells[\"movie_genre\"].value),\n  null,\n  \"http://example.org/MovieGenre/\" + cells[\"movie_genre\"].value.trim().replace(\" \", \"\")\n)",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "if(\n  isBlank(cells[\"movie_title\"].value), \n  \"http://example.org/film/Unknown\", \n  \"http://example.org/film/\" + \n  cells[\"movie_title\"].value\n    .toLowercase()\n    .replace(\" \", \"_\")\n    .replace(/[^a-z0-9_]/, \"\")\n)\n",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": []
+    }
+  ]
+}

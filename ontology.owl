@@ -1,0 +1,452 @@
+Prefix(:=<http://www.semanticweb.org/valia/ontologies/2025/3/untitled-ontology-10/>)
+Prefix(ex:=<http://example.org/ontology/>)
+Prefix(dbo:=<http://dbpedia.org/ontology/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/valia/ontologies/2025/3/untitled-ontology-10>
+
+Declaration(Class(dbo:Actor))
+Declaration(Class(dbo:Company))
+Declaration(Class(dbo:Country))
+Declaration(Class(dbo:Film))
+Declaration(Class(dbo:Genre))
+Declaration(Class(dbo:Language))
+Declaration(Class(dbo:MovieGenre))
+Declaration(Class(dbo:MusicGenre))
+Declaration(Class(dbo:MusicalArtist))
+Declaration(Class(dbo:Person))
+Declaration(Class(dbo:Producer))
+Declaration(Class(dbo:RecordLabel))
+Declaration(Class(dbo:Song))
+Declaration(Class(dbo:Work))
+Declaration(Class(ex:Composer))
+Declaration(Class(ex:Conductor))
+Declaration(Class(ex:CourtesyProvider))
+Declaration(Class(ex:Director))
+Declaration(Class(ex:FilmContributor))
+Declaration(Class(ex:FilmMusicComposer))
+Declaration(Class(ex:FilmWriter))
+Declaration(Class(ex:Licensor))
+Declaration(Class(ex:Lyricist))
+Declaration(Class(ex:MusicArranger))
+Declaration(Class(ex:Screenwriter))
+Declaration(Class(ex:SongContributor))
+Declaration(Class(ex:Songwriter))
+Declaration(Class(ex:Storywriter))
+Declaration(Class(ex:Studio))
+Declaration(ObjectProperty(dbo:artist))
+Declaration(ObjectProperty(dbo:composer))
+Declaration(ObjectProperty(dbo:country))
+Declaration(ObjectProperty(dbo:director))
+Declaration(ObjectProperty(dbo:genre))
+Declaration(ObjectProperty(dbo:language))
+Declaration(ObjectProperty(dbo:producer))
+Declaration(ObjectProperty(dbo:productionCompany))
+Declaration(ObjectProperty(dbo:recordLabel))
+Declaration(ObjectProperty(dbo:starring))
+Declaration(ObjectProperty(dbo:writer))
+Declaration(ObjectProperty(ex:actedIn))
+Declaration(ObjectProperty(ex:conductedBy))
+Declaration(ObjectProperty(ex:courtesyOf))
+Declaration(ObjectProperty(ex:filmMusicBy))
+Declaration(ObjectProperty(ex:filmWriter))
+Declaration(ObjectProperty(ex:hasSong))
+Declaration(ObjectProperty(ex:licensedBy))
+Declaration(ObjectProperty(ex:lyricsBy))
+Declaration(ObjectProperty(ex:musicBy))
+Declaration(ObjectProperty(ex:originalLanguage))
+Declaration(ObjectProperty(ex:partOfFilm))
+Declaration(ObjectProperty(ex:productionCountry))
+Declaration(ObjectProperty(ex:screenWriter))
+Declaration(ObjectProperty(ex:songWriter))
+Declaration(ObjectProperty(ex:spokenLanguage))
+Declaration(ObjectProperty(ex:storyWriter))
+Declaration(DataProperty(dbo:abstract))
+Declaration(DataProperty(dbo:budget))
+Declaration(DataProperty(dbo:comment))
+Declaration(DataProperty(dbo:imdbId))
+Declaration(DataProperty(dbo:releaseDate))
+Declaration(DataProperty(dbo:runtime))
+Declaration(DataProperty(dbo:title))
+Declaration(DataProperty(ex:adultOnly))
+Declaration(DataProperty(ex:filmAbstract))
+Declaration(DataProperty(ex:filmBudget))
+Declaration(DataProperty(ex:filmImdbId))
+Declaration(DataProperty(ex:filmReleaseDate))
+Declaration(DataProperty(ex:popularity))
+Declaration(DataProperty(ex:recordedDate))
+Declaration(DataProperty(ex:songReleaseDate))
+Declaration(DataProperty(ex:status))
+Declaration(DataProperty(ex:voteAverage))
+Declaration(Datatype(xsd:date))
+############################
+#   Object Properties
+############################
+
+# Object Property: dbo:artist (dbo:artist)
+
+ObjectPropertyDomain(dbo:artist dbo:Song)
+ObjectPropertyRange(dbo:artist dbo:MusicalArtist)
+
+# Object Property: dbo:composer (dbo:composer)
+
+ObjectPropertyDomain(dbo:composer dbo:Song)
+ObjectPropertyRange(dbo:composer ex:Composer)
+
+# Object Property: dbo:country (dbo:country)
+
+ObjectPropertyRange(dbo:country dbo:Country)
+
+# Object Property: dbo:director (dbo:director)
+
+ObjectPropertyDomain(dbo:director dbo:Film)
+ObjectPropertyRange(dbo:director ex:Director)
+
+# Object Property: dbo:genre (dbo:genre)
+
+ObjectPropertyRange(dbo:genre dbo:Genre)
+
+# Object Property: dbo:language (dbo:language)
+
+ObjectPropertyRange(dbo:language dbo:Language)
+
+# Object Property: dbo:producer (dbo:producer)
+
+ObjectPropertyDomain(dbo:producer dbo:Film)
+ObjectPropertyRange(dbo:producer dbo:Producer)
+
+# Object Property: dbo:productionCompany (dbo:productionCompany)
+
+ObjectPropertyDomain(dbo:productionCompany dbo:Film)
+ObjectPropertyRange(dbo:productionCompany dbo:Company)
+
+# Object Property: dbo:recordLabel (dbo:recordLabel)
+
+ObjectPropertyDomain(dbo:recordLabel dbo:Song)
+ObjectPropertyRange(dbo:recordLabel dbo:RecordLabel)
+
+# Object Property: dbo:starring (dbo:starring)
+
+InverseObjectProperties(dbo:starring ex:actedIn)
+ObjectPropertyDomain(dbo:starring dbo:Film)
+ObjectPropertyRange(dbo:starring dbo:Actor)
+
+# Object Property: dbo:writer (dbo:writer)
+
+ObjectPropertyDomain(dbo:writer dbo:Work)
+ObjectPropertyRange(dbo:writer dbo:Person)
+
+# Object Property: ex:actedIn (ex:actedIn)
+
+ObjectPropertyDomain(ex:actedIn dbo:Actor)
+ObjectPropertyRange(ex:actedIn dbo:Film)
+
+# Object Property: ex:conductedBy (ex:conductedBy)
+
+ObjectPropertyDomain(ex:conductedBy dbo:Song)
+ObjectPropertyRange(ex:conductedBy ex:Conductor)
+
+# Object Property: ex:courtesyOf (ex:courtesyOf)
+
+ObjectPropertyDomain(ex:courtesyOf dbo:Song)
+ObjectPropertyRange(ex:courtesyOf ex:CourtesyProvider)
+
+# Object Property: ex:filmMusicBy (ex:filmMusicBy)
+
+ObjectPropertyDomain(ex:filmMusicBy dbo:Film)
+ObjectPropertyRange(ex:filmMusicBy ex:FilmMusicComposer)
+
+# Object Property: ex:filmWriter (ex:filmWriter)
+
+SubObjectPropertyOf(ex:filmWriter dbo:writer)
+ObjectPropertyDomain(ex:filmWriter dbo:Film)
+ObjectPropertyRange(ex:filmWriter ex:FilmWriter)
+
+# Object Property: ex:hasSong (ex:hasSong)
+
+InverseObjectProperties(ex:hasSong ex:partOfFilm)
+ObjectPropertyDomain(ex:hasSong dbo:Film)
+ObjectPropertyRange(ex:hasSong dbo:Song)
+
+# Object Property: ex:licensedBy (ex:licensedBy)
+
+ObjectPropertyDomain(ex:licensedBy dbo:Song)
+ObjectPropertyRange(ex:licensedBy ex:Licensor)
+
+# Object Property: ex:lyricsBy (ex:lyricsBy)
+
+ObjectPropertyDomain(ex:lyricsBy dbo:Song)
+ObjectPropertyRange(ex:lyricsBy ex:Lyricist)
+
+# Object Property: ex:musicBy (ex:musicBy)
+
+ObjectPropertyDomain(ex:musicBy dbo:Song)
+ObjectPropertyRange(ex:musicBy ex:MusicArranger)
+
+# Object Property: ex:originalLanguage (ex:originalLanguage)
+
+SubObjectPropertyOf(ex:originalLanguage dbo:language)
+ObjectPropertyDomain(ex:originalLanguage dbo:Film)
+ObjectPropertyRange(ex:originalLanguage dbo:Language)
+
+# Object Property: ex:partOfFilm (ex:partOfFilm)
+
+ObjectPropertyDomain(ex:partOfFilm dbo:Song)
+ObjectPropertyRange(ex:partOfFilm dbo:Film)
+
+# Object Property: ex:productionCountry (ex:productionCountry)
+
+SubObjectPropertyOf(ex:productionCountry dbo:country)
+ObjectPropertyDomain(ex:productionCountry dbo:Film)
+ObjectPropertyRange(ex:productionCountry dbo:Country)
+
+# Object Property: ex:screenWriter (ex:screenWriter)
+
+SubObjectPropertyOf(ex:screenWriter dbo:writer)
+ObjectPropertyDomain(ex:screenWriter dbo:Film)
+ObjectPropertyRange(ex:screenWriter ex:Screenwriter)
+
+# Object Property: ex:songWriter (ex:songWriter)
+
+SubObjectPropertyOf(ex:songWriter dbo:writer)
+ObjectPropertyDomain(ex:songWriter dbo:Song)
+ObjectPropertyRange(ex:songWriter ex:Songwriter)
+
+# Object Property: ex:spokenLanguage (ex:spokenLanguage)
+
+SubObjectPropertyOf(ex:spokenLanguage dbo:language)
+ObjectPropertyDomain(ex:spokenLanguage dbo:Film)
+ObjectPropertyRange(ex:spokenLanguage dbo:Language)
+
+# Object Property: ex:storyWriter (ex:storyWriter)
+
+SubObjectPropertyOf(ex:storyWriter dbo:writer)
+ObjectPropertyDomain(ex:storyWriter dbo:Film)
+ObjectPropertyRange(ex:storyWriter ex:Storywriter)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: dbo:abstract (dbo:abstract)
+
+DataPropertyRange(dbo:abstract rdf:langString)
+
+# Data Property: dbo:budget (dbo:budget)
+
+DataPropertyRange(dbo:budget xsd:double)
+
+# Data Property: dbo:comment (dbo:comment)
+
+DataPropertyRange(dbo:comment xsd:string)
+
+# Data Property: dbo:imdbId (dbo:imdbId)
+
+DataPropertyRange(dbo:imdbId xsd:string)
+
+# Data Property: dbo:releaseDate (dbo:releaseDate)
+
+DataPropertyRange(dbo:releaseDate xsd:date)
+
+# Data Property: dbo:runtime (dbo:runtime)
+
+DataPropertyDomain(dbo:runtime dbo:Work)
+DataPropertyRange(dbo:runtime xsd:double)
+
+# Data Property: dbo:title (dbo:title)
+
+DataPropertyDomain(dbo:title dbo:Work)
+DataPropertyRange(dbo:title rdf:langString)
+
+# Data Property: ex:adultOnly (ex:adultOnly)
+
+DataPropertyDomain(ex:adultOnly dbo:Film)
+DataPropertyRange(ex:adultOnly xsd:boolean)
+
+# Data Property: ex:filmAbstract (ex:filmAbstract)
+
+SubDataPropertyOf(ex:filmAbstract dbo:abstract)
+DataPropertyDomain(ex:filmAbstract dbo:Film)
+DataPropertyRange(ex:filmAbstract xsd:string)
+
+# Data Property: ex:filmBudget (ex:filmBudget)
+
+SubDataPropertyOf(ex:filmBudget dbo:budget)
+DataPropertyDomain(ex:filmBudget dbo:Film)
+DataPropertyRange(ex:filmBudget xsd:double)
+
+# Data Property: ex:filmImdbId (ex:filmImdbId)
+
+SubDataPropertyOf(ex:filmImdbId dbo:imdbId)
+FunctionalDataProperty(ex:filmImdbId)
+DataPropertyDomain(ex:filmImdbId dbo:Film)
+DataPropertyRange(ex:filmImdbId xsd:string)
+
+# Data Property: ex:filmReleaseDate (ex:filmReleaseDate)
+
+SubDataPropertyOf(ex:filmReleaseDate dbo:releaseDate)
+FunctionalDataProperty(ex:filmReleaseDate)
+DataPropertyDomain(ex:filmReleaseDate dbo:Film)
+DataPropertyRange(ex:filmReleaseDate xsd:date)
+
+# Data Property: ex:popularity (ex:popularity)
+
+DataPropertyDomain(ex:popularity dbo:Film)
+DataPropertyRange(ex:popularity xsd:float)
+
+# Data Property: ex:recordedDate (ex:recordedDate)
+
+FunctionalDataProperty(ex:recordedDate)
+DataPropertyDomain(ex:recordedDate dbo:Song)
+DataPropertyRange(ex:recordedDate xsd:date)
+
+# Data Property: ex:songReleaseDate (ex:songReleaseDate)
+
+SubDataPropertyOf(ex:songReleaseDate dbo:releaseDate)
+FunctionalDataProperty(ex:songReleaseDate)
+DataPropertyDomain(ex:songReleaseDate dbo:Song)
+DataPropertyRange(ex:songReleaseDate xsd:date)
+
+# Data Property: ex:status (ex:status)
+
+DataPropertyDomain(ex:status dbo:Film)
+DataPropertyRange(ex:status xsd:string)
+
+# Data Property: ex:voteAverage (ex:voteAverage)
+
+DataPropertyDomain(ex:voteAverage dbo:Film)
+DataPropertyRange(ex:voteAverage xsd:float)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: dbo:Actor (dbo:Actor)
+
+EquivalentClasses(dbo:Actor ObjectSomeValuesFrom(ex:actedIn dbo:Film))
+SubClassOf(dbo:Actor ex:FilmContributor)
+
+# Class: dbo:Film (dbo:Film)
+
+SubClassOf(dbo:Film dbo:Work)
+SubClassOf(dbo:Film ObjectSomeValuesFrom(dbo:director ex:Director))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(dbo:producer dbo:Producer))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(dbo:productionCompany dbo:Company))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(ex:filmMusicBy ex:FilmMusicComposer))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(ex:filmWriter ex:FilmWriter))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(ex:productionCountry dbo:Country))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(ex:screenWriter ex:Screenwriter))
+SubClassOf(dbo:Film ObjectSomeValuesFrom(ex:storyWriter ex:Storywriter))
+SubClassOf(dbo:Film ObjectAllValuesFrom(dbo:genre dbo:MovieGenre))
+SubClassOf(dbo:Film ObjectAllValuesFrom(dbo:starring dbo:Actor))
+SubClassOf(dbo:Film DataExactCardinality(1 ex:filmReleaseDate xsd:date))
+DisjointClasses(dbo:Film dbo:Song)
+
+# Class: dbo:MovieGenre (dbo:MovieGenre)
+
+SubClassOf(dbo:MovieGenre dbo:Genre)
+DisjointClasses(dbo:MovieGenre dbo:MusicGenre)
+
+# Class: dbo:MusicGenre (dbo:MusicGenre)
+
+SubClassOf(dbo:MusicGenre dbo:Genre)
+
+# Class: dbo:MusicalArtist (dbo:MusicalArtist)
+
+SubClassOf(dbo:MusicalArtist ex:SongContributor)
+
+# Class: dbo:Producer (dbo:Producer)
+
+SubClassOf(dbo:Producer ex:FilmContributor)
+
+# Class: dbo:RecordLabel (dbo:RecordLabel)
+
+SubClassOf(dbo:RecordLabel dbo:Company)
+
+# Class: dbo:Song (dbo:Song)
+
+SubClassOf(dbo:Song dbo:Work)
+SubClassOf(dbo:Song ObjectSomeValuesFrom(dbo:artist dbo:MusicalArtist))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(dbo:composer ex:Composer))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:conductedBy ex:Conductor))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:courtesyOf ex:CourtesyProvider))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:licensedBy ex:Licensor))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:lyricsBy ex:Lyricist))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:musicBy ex:MusicArranger))
+SubClassOf(dbo:Song ObjectSomeValuesFrom(ex:songWriter ex:Songwriter))
+SubClassOf(dbo:Song ObjectAllValuesFrom(dbo:genre dbo:MusicGenre))
+SubClassOf(dbo:Song DataExactCardinality(1 ex:recordedDate xsd:date))
+SubClassOf(dbo:Song DataExactCardinality(1 ex:songReleaseDate xsd:date))
+
+# Class: ex:Composer (ex:Composer)
+
+SubClassOf(ex:Composer ex:SongContributor)
+
+# Class: ex:Conductor (ex:Conductor)
+
+SubClassOf(ex:Conductor ex:SongContributor)
+
+# Class: ex:CourtesyProvider (ex:CourtesyProvider)
+
+SubClassOf(ex:CourtesyProvider dbo:Company)
+
+# Class: ex:Director (ex:Director)
+
+SubClassOf(ex:Director ex:FilmContributor)
+
+# Class: ex:FilmContributor (ex:FilmContributor)
+
+SubClassOf(ex:FilmContributor dbo:Person)
+
+# Class: ex:FilmMusicComposer (ex:FilmMusicComposer)
+
+SubClassOf(ex:FilmMusicComposer ex:FilmContributor)
+
+# Class: ex:FilmWriter (ex:FilmWriter)
+
+SubClassOf(ex:FilmWriter ex:FilmContributor)
+
+# Class: ex:Licensor (ex:Licensor)
+
+SubClassOf(ex:Licensor dbo:Company)
+
+# Class: ex:Lyricist (ex:Lyricist)
+
+SubClassOf(ex:Lyricist ex:SongContributor)
+
+# Class: ex:MusicArranger (ex:MusicArranger)
+
+SubClassOf(ex:MusicArranger ex:SongContributor)
+
+# Class: ex:Screenwriter (ex:Screenwriter)
+
+SubClassOf(ex:Screenwriter ex:FilmContributor)
+
+# Class: ex:SongContributor (ex:SongContributor)
+
+SubClassOf(ex:SongContributor dbo:Person)
+
+# Class: ex:Songwriter (ex:Songwriter)
+
+SubClassOf(ex:Songwriter ex:SongContributor)
+
+# Class: ex:Storywriter (ex:Storywriter)
+
+SubClassOf(ex:Storywriter ex:FilmContributor)
+
+# Class: ex:Studio (ex:Studio)
+
+SubClassOf(ex:Studio dbo:Company)
+
+
+HasKey(dbo:Film () (dbo:title ex:filmReleaseDate))
+HasKey(dbo:Song () (dbo:title ex:recordedDate))
+)

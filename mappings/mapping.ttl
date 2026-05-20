@@ -1,0 +1,460 @@
+﻿@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix ex: <http://example.org/ontology/> .
+
+@base <http://example.org/resource/> .
+
+<#SongMapping> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/song/{song_slug}" ;
+    rr:class dbo:Song
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:title ;
+    rr:objectMap [ rml:reference "song_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:songReleaseDate ;
+    rr:objectMap [ rml:reference "released" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:recordedDate ;
+    rr:objectMap [ rml:reference "recorded" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:runtime ;
+    rr:objectMap [
+      rml:reference "length" ;
+      rr:datatype xsd:double
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:recordLabel ;
+    rr:objectMap [ rr:template "http://example.org/record-label/{label_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:genre ;
+    rr:objectMap [ rr:template "http://example.org/music-genre/{music_genre_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:songWriter ;
+    rr:objectMap [ rr:template "http://example.org/person/{songwriter_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:songWriter ;
+    rr:objectMap [ rr:template "http://example.org/person/{written_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:composer ;
+    rr:objectMap [ rr:template "http://example.org/person/{composed_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:artist ;
+    rr:objectMap [ rr:template "http://example.org/person/{performed_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:lyricsBy ;
+    rr:objectMap [ rr:template "http://example.org/person/{lyrics_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:musicBy ;
+    rr:objectMap [ rr:template "http://example.org/person/{music_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:conductedBy ;
+    rr:objectMap [ rr:template "http://example.org/person/{conducted_by_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:courtesyOf ;
+    rr:objectMap [ rr:template "http://example.org/company/{courtesy_of_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:licensedBy ;
+    rr:objectMap [ rr:template "http://example.org/company/{under_license_from_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:partOfFilm ;
+    rr:objectMap [ rr:template "http://example.org/film/{imdb_id}" ]
+  ] .
+
+<#FilmMapping> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/film/{imdb_id}" ;
+    rr:class dbo:Film
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:title ;
+    rr:objectMap [ rml:reference "movie_title" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmAbstract ;
+    rr:objectMap [ rml:reference "overview" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmBudget ;
+    rr:objectMap [
+      rml:reference "budget" ;
+      rr:datatype xsd:double
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:runtime ;
+    rr:objectMap [
+      rml:reference "running_time" ;
+      rr:datatype xsd:double
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmImdbId ;
+    rr:objectMap [ rml:reference "imdb_id" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmReleaseDate ;
+    rr:objectMap [ rml:reference "release_date" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:status ;
+    rr:objectMap [ rml:reference "status" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:adultOnly ;
+    rr:objectMap [
+      rml:reference "adult" ;
+      rr:datatype xsd:boolean
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:popularity ;
+    rr:objectMap [
+      rml:reference "popularity" ;
+      rr:datatype xsd:float
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:voteAverage ;
+    rr:objectMap [
+      rml:reference "vote_average" ;
+      rr:datatype xsd:float
+    ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:originalLanguage ;
+    rr:objectMap [ rr:template "http://example.org/language/{original_language_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:spokenLanguage ;
+    rr:objectMap [ rr:template "http://example.org/language/{spoken_language_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:genre ;
+    rr:objectMap [ rr:template "http://example.org/movie-genre/{movie_genre_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:productionCompany ;
+    rr:objectMap [ rr:template "http://example.org/company/{production_company_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:productionCountry ;
+    rr:objectMap [ rr:template "http://example.org/country/{production_country_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:director ;
+    rr:objectMap [ rr:template "http://example.org/person/{directed_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:producer ;
+    rr:objectMap [ rr:template "http://example.org/person/{produced_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dbo:starring ;
+    rr:objectMap [ rr:template "http://example.org/person/{starring_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmMusicBy ;
+    rr:objectMap [ rr:template "http://example.org/person/{movie_music_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:screenWriter ;
+    rr:objectMap [ rr:template "http://example.org/person/{screenplay_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:storyWriter ;
+    rr:objectMap [ rr:template "http://example.org/person/{story_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:filmWriter ;
+    rr:objectMap [ rr:template "http://example.org/person/{movie_written_by_slug[*]}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:hasSong ;
+    rr:objectMap [ rr:template "http://example.org/song/{song_slug}" ]
+  ] .
+
+<#MovieGenreClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/movie-genre/{movie_genre_slug[*]}" ;
+    rr:class dbo:MovieGenre
+  ] .
+
+<#MusicGenreClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/music-genre/{music_genre_slug[*]}" ;
+    rr:class dbo:MusicGenre
+  ] .
+
+<#LanguageClassFromOriginal> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/language/{original_language_slug[*]}" ;
+    rr:class dbo:Language
+  ] .
+
+<#LanguageClassFromSpoken> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/language/{spoken_language_slug[*]}" ;
+    rr:class dbo:Language
+  ] .
+
+<#CountryClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/country/{production_country_slug[*]}" ;
+    rr:class dbo:Country
+  ] .
+
+<#CompanyClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/company/{production_company_slug[*]}" ;
+    rr:class dbo:Company
+  ] .
+
+<#RecordLabelClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/record-label/{label_slug}" ;
+    rr:class dbo:RecordLabel
+  ] .
+
+<#MusicalArtistClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{performed_by_slug[*]}" ;
+    rr:class dbo:MusicalArtist
+  ] .
+
+<#SongwriterClassFromSongwriter> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{songwriter_slug[*]}" ;
+    rr:class ex:Songwriter
+  ] .
+
+<#SongwriterClassFromWrittenBy> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{written_by_slug[*]}" ;
+    rr:class ex:Songwriter
+  ] .
+
+<#ComposerClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{composed_by_slug[*]}" ;
+    rr:class ex:Composer
+  ] .
+
+<#LyricistClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{lyrics_by_slug[*]}" ;
+    rr:class ex:Lyricist
+  ] .
+
+<#MusicArrangerClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{music_by_slug[*]}" ;
+    rr:class ex:MusicArranger
+  ] .
+
+<#ConductorClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{conducted_by_slug}" ;
+    rr:class ex:Conductor
+  ] .
+
+<#DirectorClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{directed_by_slug[*]}" ;
+    rr:class ex:Director
+  ] .
+
+<#FilmProducerClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{produced_by_slug[*]}" ;
+    rr:class dbo:Producer
+  ] .
+
+<#ActorClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{starring_slug[*]}" ;
+    rr:class dbo:Actor
+  ] .
+
+<#FilmMusicComposerClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{movie_music_by_slug[*]}" ;
+    rr:class ex:FilmMusicComposer
+  ] .
+
+<#ScreenwriterClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{screenplay_by_slug[*]}" ;
+    rr:class ex:Screenwriter
+  ] .
+
+<#StorywriterClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{story_by_slug[*]}" ;
+    rr:class ex:Storywriter
+  ] .
+
+<#FilmWriterClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/person/{movie_written_by_slug[*]}" ;
+    rr:class ex:FilmWriter
+  ] .
+
+<#CourtesyProviderClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/company/{courtesy_of_slug}" ;
+    rr:class ex:CourtesyProvider
+  ] .
+
+<#LicensorClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/company/{under_license_from_slug}" ;
+    rr:class ex:Licensor
+  ] .
+
