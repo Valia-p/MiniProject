@@ -1,0 +1,153 @@
+﻿=========================================================
+QUERY 1 - Films, Songs, Artists
+=========================================================
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX ex:   <http://example.org/ontology/>
+
+SELECT DISTINCT ?film ?filmTitle ?song ?songTitle ?artist
+WHERE {
+  ?film a dbo:Film ;
+        ex:hasSong ?song .
+
+  ?song a dbo:Song ;
+        dbo:artist ?artist .
+
+  ?artist a dbo:MusicalArtist .
+
+  OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?song dbo:title ?songTitle . }
+}
+ORDER BY ?film ?song ?artist
+LIMIT 100
+
+
+=========================================================
+QUERY 2 - Films by Genre and Production Country
+=========================================================
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX ex:   <http://example.org/ontology/>
+
+SELECT DISTINCT ?film ?filmTitle ?genre ?country
+WHERE {
+  ?film a dbo:Film ;
+        dbo:genre ?genre ;
+        ex:productionCountry ?country .
+
+  ?genre a dbo:Genre .
+  ?country a dbo:Country .
+
+  OPTIONAL { ?film dbo:title ?filmTitle . }
+}
+ORDER BY ?filmTitle ?genre ?country
+LIMIT 200
+
+
+=========================================================
+QUERY 3 - Directors and Soundtracks
+=========================================================
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX ex:   <http://example.org/ontology/>
+
+SELECT DISTINCT ?director ?film ?filmTitle ?song ?songTitle
+WHERE {
+  ?director a ex:Director .
+
+  ?film a dbo:Film ;
+        dbo:director ?director ;
+        ex:hasSong ?song .
+
+  ?song a dbo:Song .
+
+  OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?song dbo:title ?songTitle . }
+}
+ORDER BY ?director ?filmTitle ?songTitle
+LIMIT 150
+
+
+=========================================================
+QUERY 4 - Reasoning via Inverse Property (partOfFilm)
+=========================================================
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX ex:   <http://example.org/ontology/>
+
+SELECT DISTINCT ?song ?songTitle ?film ?filmTitle
+WHERE {
+  ?song a dbo:Song ;
+        ex:partOfFilm ?film .
+
+  ?film a dbo:Film .
+
+  OPTIONAL { ?song dbo:title ?songTitle . }
+  OPTIONAL { ?film dbo:title ?filmTitle . }
+}
+ORDER BY ?film ?song
+LIMIT 150
+
+
+=========================================================
+QUERY 5 - People with Multiple Roles
+=========================================================
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX dbo:  <http://dbpedia.org/ontology/>
+PREFIX ex:   <http://example.org/ontology/>
+
+SELECT ?person
+       (COUNT(DISTINCT ?role) AS ?roleCount)
+       (GROUP_CONCAT(DISTINCT ?role; separator=", ") AS ?roles)
+WHERE {
+  {
+    ?song dbo:artist ?person .
+    BIND("artist" AS ?role)
+  }
+  UNION
+  {
+    ?song dbo:composer ?person .
+    BIND("composer" AS ?role)
+  }
+  UNION
+  {
+    ?song ex:lyricsBy ?person .
+    BIND("lyricist" AS ?role)
+  }
+  UNION
+  {
+    ?song ex:songWriter ?person .
+    BIND("songwriter" AS ?role)
+  }
+  UNION
+  {
+    ?film dbo:director ?person .
+    BIND("director" AS ?role)
+  }
+  UNION
+  {
+    ?film dbo:starring ?person .
+    BIND("actor" AS ?role)
+  }
+  UNION
+  {
+    ?film dbo:producer ?person .
+    BIND("producer" AS ?role)
+  }
+
+  ?person a dbo:Person .
+}
+GROUP BY ?person
+HAVING (COUNT(DISTINCT ?role) > 1)
+ORDER BY DESC(?roleCount) ?person
+LIMIT 100
