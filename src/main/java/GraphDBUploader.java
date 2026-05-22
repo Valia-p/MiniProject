@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GraphDBUploader {
     private static final String DEFAULT_GRAPHDB_BASE_URL = "http://localhost:7200";
-    private static final String DEFAULT_REPOSITORY_NAME = "MiniProject";
+    private static final String DEFAULT_REPOSITORY_NAME = "MiniProjekt";
     private static final String DEFAULT_GENERATED_TTL_PATH = "output/generated.ttl";
     private static final String DATA_BASE_IRI = "http://example.org/resource/";
     private static final String ONTOLOGY_BASE_IRI = "http://example.org/ontology/";
@@ -22,7 +22,7 @@ public class GraphDBUploader {
         String graphdbBaseUrl = args.length > 0 ? args[0] : DEFAULT_GRAPHDB_BASE_URL;
         String repositoryName = args.length > 1 ? args[1] : DEFAULT_REPOSITORY_NAME;
         String generatedTtlPath = args.length > 2 ? args[2] : DEFAULT_GENERATED_TTL_PATH;
-        boolean clearBeforeLoad = args.length <= 3 || Boolean.parseBoolean(args[3]);
+        boolean clearBeforeLoad = args.length > 3 && Boolean.parseBoolean(args[3]);
 
         new GraphDBUploader().run(
                 graphdbBaseUrl,
@@ -44,15 +44,22 @@ public class GraphDBUploader {
         System.out.println("Repository name   : " + repositoryName);
         System.out.println("Generated TTL     : " + generatedTtlPath);
         System.out.println("Clear before load : " + clearBeforeLoad);
+        System.out.println("Connecting to GraphDB...");
 
         try (RepositoryConnection connection = repository.getConnection()) {
+            System.out.println("Connected.");
+
             if (clearBeforeLoad) {
                 connection.clear();
                 System.out.println("Repository cleared.");
+            } else {
+                System.out.println("Keeping existing repository data.");
             }
 
             uploadOntologyIfSupported(connection);
+            System.out.println("Uploading RDF file...");
             uploadTurtle(connection, Path.of(generatedTtlPath));
+            System.out.println("Upload completed successfully.");
             printTripleCount(connection);
         } catch (Exception e) {
             throw new RuntimeException("GraphDB upload failed: " + e.getMessage(), e);
@@ -68,7 +75,7 @@ public class GraphDBUploader {
         try (FileInputStream fis = new FileInputStream(ttlFile.toFile())) {
             connection.add(fis, DATA_BASE_IRI, RDFFormat.TURTLE);
         }
-        System.out.println("Uploaded: " + ttlFile);
+        System.out.println("Uploaded RDF: " + ttlFile);
     }
 
     private void uploadOntologyIfSupported(RepositoryConnection connection) throws IOException {

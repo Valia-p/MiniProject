@@ -1,6 +1,13 @@
 # Generated RDF output
 output/generated.ttl
 
+# Maven build output
+target/
+
+# Local documentation drafts
+README2.txt
+report_overleaf.tex
+
 # Raw input datasets (CSV / Excel)
 data/raw/*.csv
 data/raw/*.xls
