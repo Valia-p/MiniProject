@@ -1,0 +1,844 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/valia/ontologies/2025/3/untitled-ontology-10/"
+     xml:base="http://www.semanticweb.org/valia/ontologies/2025/3/untitled-ontology-10/"
+     xmlns:ex="http://example.org/ontology/"
+     xmlns:dbo="http://dbpedia.org/ontology/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/valia/ontologies/2025/3/untitled-ontology-10"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/artist -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/artist">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/MusicalArtist"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/composer -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/composer">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Composer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/country -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/country">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Country"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/director -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/director">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Director"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/genre -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/genre">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Genre"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/language -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/language">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Language"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/producer -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/producer">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Producer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/productionCompany -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/productionCompany">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Company"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/recordLabel -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/recordLabel">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/RecordLabel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/starring -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/starring">
+        <owl:inverseOf rdf:resource="http://example.org/ontology/actedIn"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/writer -->
+
+    <owl:ObjectProperty rdf:about="http://dbpedia.org/ontology/writer">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/actedIn -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/actedIn">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Actor"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Film"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/conductedBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/conductedBy">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Conductor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/courtesyOf -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/courtesyOf">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/CourtesyProvider"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmMusicBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/filmMusicBy">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/FilmMusicComposer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmWriter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/filmWriter">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/writer"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/FilmWriter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/hasSong -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/hasSong">
+        <owl:inverseOf rdf:resource="http://example.org/ontology/partOfFilm"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Song"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/licensedBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/licensedBy">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Licensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/lyricsBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/lyricsBy">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Lyricist"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/musicBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/musicBy">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/MusicArranger"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/originalLanguage -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/originalLanguage">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/language"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Language"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/partOfFilm -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/partOfFilm">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Film"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/productionCountry -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/productionCountry">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/country"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Country"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/screenWriter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/screenWriter">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/writer"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Screenwriter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/songWriter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/songWriter">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/writer"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Songwriter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/spokenLanguage -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/spokenLanguage">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/language"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Language"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/ontology/storyWriter -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/storyWriter">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/writer"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Storywriter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/abstract -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/abstract">
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/budget -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/budget">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/comment -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/comment">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/imdbId -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/imdbId">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/releaseDate -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/releaseDate">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/runtime -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/runtime">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/title -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/title">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/adultOnly -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/adultOnly">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmAbstract -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/filmAbstract">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/abstract"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmBudget -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/filmBudget">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/budget"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmImdbId -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/filmImdbId">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/imdbId"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/filmReleaseDate -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/filmReleaseDate">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/releaseDate"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/popularity -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/popularity">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/recordedDate -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/recordedDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/songReleaseDate -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/songReleaseDate">
+        <rdfs:subPropertyOf rdf:resource="http://dbpedia.org/ontology/releaseDate"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/status -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/status">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/voteAverage -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/voteAverage">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Actor -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Actor">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/actedIn"/>
+                <owl:someValuesFrom rdf:resource="http://dbpedia.org/ontology/Film"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Company -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Company"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Country -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Country"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Film -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Film">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/director"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Director"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/producer"/>
+                <owl:someValuesFrom rdf:resource="http://dbpedia.org/ontology/Producer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/productionCompany"/>
+                <owl:someValuesFrom rdf:resource="http://dbpedia.org/ontology/Company"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/filmMusicBy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/FilmMusicComposer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/filmWriter"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/FilmWriter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/productionCountry"/>
+                <owl:someValuesFrom rdf:resource="http://dbpedia.org/ontology/Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/screenWriter"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Screenwriter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/storyWriter"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Storywriter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/genre"/>
+                <owl:allValuesFrom rdf:resource="http://dbpedia.org/ontology/MovieGenre"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/starring"/>
+                <owl:allValuesFrom rdf:resource="http://dbpedia.org/ontology/Actor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/filmReleaseDate"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://dbpedia.org/ontology/title"/>
+            <rdf:Description rdf:about="http://example.org/ontology/filmReleaseDate"/>
+        </owl:hasKey>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Genre -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Genre"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Language -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Language"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/MovieGenre -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/MovieGenre">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Genre"/>
+        <owl:disjointWith rdf:resource="http://dbpedia.org/ontology/MusicGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/MusicGenre -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/MusicGenre">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/MusicalArtist -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/MusicalArtist">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Person -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Person"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Producer -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Producer">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/RecordLabel -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/RecordLabel">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Company"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Song -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Song">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/artist"/>
+                <owl:someValuesFrom rdf:resource="http://dbpedia.org/ontology/MusicalArtist"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/composer"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Composer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/conductedBy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Conductor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/courtesyOf"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/CourtesyProvider"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/licensedBy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Licensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/lyricsBy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Lyricist"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/musicBy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/MusicArranger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/songWriter"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology/Songwriter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dbpedia.org/ontology/genre"/>
+                <owl:allValuesFrom rdf:resource="http://dbpedia.org/ontology/MusicGenre"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/recordedDate"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology/songReleaseDate"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://dbpedia.org/ontology/title"/>
+            <rdf:Description rdf:about="http://example.org/ontology/recordedDate"/>
+        </owl:hasKey>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Work -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Work"/>
+    
+
+
+    <!-- http://example.org/ontology/Composer -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Composer">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Conductor -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Conductor">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/CourtesyProvider -->
+
+    <owl:Class rdf:about="http://example.org/ontology/CourtesyProvider">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Company"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Director -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Director">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/FilmContributor -->
+
+    <owl:Class rdf:about="http://example.org/ontology/FilmContributor">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/FilmMusicComposer -->
+
+    <owl:Class rdf:about="http://example.org/ontology/FilmMusicComposer">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/FilmWriter -->
+
+    <owl:Class rdf:about="http://example.org/ontology/FilmWriter">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Licensor -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Licensor">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Company"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Lyricist -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Lyricist">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/MusicArranger -->
+
+    <owl:Class rdf:about="http://example.org/ontology/MusicArranger">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Screenwriter -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Screenwriter">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/SongContributor -->
+
+    <owl:Class rdf:about="http://example.org/ontology/SongContributor">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Songwriter -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Songwriter">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/SongContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Storywriter -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Storywriter">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology/FilmContributor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/ontology/Studio -->
+
+    <owl:Class rdf:about="http://example.org/ontology/Studio">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Company"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

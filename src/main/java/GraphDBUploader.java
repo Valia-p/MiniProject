@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GraphDBUploader {
     private static final String DEFAULT_GRAPHDB_BASE_URL = "http://localhost:7200";
-    private static final String DEFAULT_REPOSITORY_NAME = "MiniProjekt";
+    private static final String DEFAULT_REPOSITORY_NAME = "MiniProject";
     private static final String DEFAULT_GENERATED_TTL_PATH = "output/generated.ttl";
     private static final String DATA_BASE_IRI = "http://example.org/resource/";
     private static final String ONTOLOGY_BASE_IRI = "http://example.org/ontology/";
