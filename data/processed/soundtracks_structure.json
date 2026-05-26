@@ -64,14 +64,14 @@
       "example": ""
     },
     "released": {
-      "type": "string",
+      "type": "xsd:date",
       "nullable": true,
-      "example": ""
+      "example": "1965-04-01"
     },
     "recorded": {
-      "type": "string",
+      "type": "xsd:date",
       "nullable": true,
-      "example": ""
+      "example": "1965-03-01"
     },
     "music_genre": {
       "type": "array",
@@ -151,9 +151,9 @@
       "example": []
     },
     "release_date": {
-      "type": "string",
+      "type": "xsd:date",
       "nullable": false,
-      "example": ""
+      "example": "1994-07-06"
     },
     "spoken_language": {
       "type": "array",

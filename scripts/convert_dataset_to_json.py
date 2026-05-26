@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +12,13 @@ import pandas as pd
 
 SUPPORTED_EXTENSIONS = (".csv", ".xls", ".xlsx")
 NULL_TOKENS = {"", "unknown", "null", "none", "nan"}
+
+# Date columns are serialized as ISO xsd:date lexical values.
+DATE_COLUMNS = {
+    "released",
+    "recorded",
+    "release_date",
+}
 
 # Explicit renames for ambiguous/duplicate source headers.
 EXPLICIT_COLUMN_RENAMES = {
@@ -171,6 +179,39 @@ def normalize_scalar(value: Any) -> Any:
     return text if text else None
 
 
+def normalize_date(value: Any) -> str | None:
+    if is_null_like(value):
+        return None
+
+    if isinstance(value, datetime):
+        return value.date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+
+    scalar = normalize_scalar(value)
+    if scalar is None:
+        return None
+
+    text = str(scalar).strip()
+
+    for fmt in ("%Y-%m-%d", "%Y-%m-%d %H:%M:%S", "%d/%m/%Y"):
+        try:
+            return datetime.strptime(text, fmt).date().isoformat()
+        except ValueError:
+            pass
+
+    month_year = re.fullmatch(r"(\d{1,2})/(\d{4})", text)
+    if month_year:
+        month = int(month_year.group(1))
+        year = int(month_year.group(2))
+        if 1 <= month <= 12:
+            return f"{year:04d}-{month:02d}-01"
+
+    raise ValueError(
+        f"Unsupported date value {text!r}; expected DD/MM/YYYY, MM/YYYY, or YYYY-MM-DD"
+    )
+
+
 def split_multi_value(value: Any, allow_slash: bool = False) -> list[Any]:
     if is_null_like(value):
         return []
@@ -278,7 +319,9 @@ def rows_to_json_records(
         item: dict[str, Any] = {}
         for col in df.columns:
             value = row[col]
-            if col in multi_value_columns:
+            if col in DATE_COLUMNS:
+                item[col] = normalize_date(value)
+            elif col in multi_value_columns:
                 item[col] = split_multi_value(
                     value, allow_slash=col in SLASH_SPLIT_COLUMNS
                 )
@@ -338,6 +381,7 @@ def main() -> None:
         "columns_cleaned_count": len(df.columns),
         "column_mapping": column_mapping,
         "multi_value_columns": multi_value_columns,
+        "date_columns": sorted(DATE_COLUMNS),
         "null_tokens_handled": sorted(NULL_TOKENS),
         "output_files": [
             str(dataset_out.relative_to(project_root).as_posix()),

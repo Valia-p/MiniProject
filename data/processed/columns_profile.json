@@ -191,6 +191,11 @@
     "movie_music_by",
     "movie_written_by"
   ],
+  "date_columns": [
+    "recorded",
+    "release_date",
+    "released"
+  ],
   "null_tokens_handled": [
     "",
     "nan",

@@ -25,11 +25,17 @@
   ] ;
   rr:predicateObjectMap [
     rr:predicate ex:songReleaseDate ;
-    rr:objectMap [ rml:reference "released" ]
+    rr:objectMap [
+      rml:reference "released" ;
+      rr:datatype xsd:date
+    ]
   ] ;
   rr:predicateObjectMap [
     rr:predicate ex:recordedDate ;
-    rr:objectMap [ rml:reference "recorded" ]
+    rr:objectMap [
+      rml:reference "recorded" ;
+      rr:datatype xsd:date
+    ]
   ] ;
   rr:predicateObjectMap [
     rr:predicate dbo:runtime ;
@@ -125,7 +131,10 @@
   ] ;
   rr:predicateObjectMap [
     rr:predicate ex:filmReleaseDate ;
-    rr:objectMap [ rml:reference "release_date" ]
+    rr:objectMap [
+      rml:reference "release_date" ;
+      rr:datatype xsd:date
+    ]
   ] ;
   rr:predicateObjectMap [
     rr:predicate ex:status ;
