@@ -27,13 +27,14 @@ Raw dataset (Excel)
 5. `output/generated.ttl`: RDF/Turtle που παράγεται από το mapping.
 6. `queries/sparql_queries.txt`: τα SPARQL queries που εκτελούνται.
 7. `output/query_results.txt`: αποθηκευμένα αποτελέσματα των queries.
-8. `ontology.owl`: ontology σε OWL Functional Syntax.
+8. `ontology.owl`: ontology σε OWL Functional Syntax (αρχείο επεξεργασίας).
 9. `ontology.rdf`: ontology σε RDF/XML (φορτώνεται αυτόματα από uploader).
-10. `src/main/java/RMLMapping.java`: εκτέλεση RML και παραγωγή TTL.
+10. `scripts/convert_dataset_to_json.py`: Python preprocessing — καθαρισμός, slugification, φιλτράρισμα null τιμών, παραγωγή `soundtracks_clean.json`.
+11. `src/main/java/RMLMapping.java`: εκτέλεση RML και παραγωγή TTL.
 11. `src/main/java/GraphDBUploader.java`: φόρτωση ontology + TTL στο GraphDB.
-12. `src/main/java/QueryRunner.java`: εκτέλεση queries και export σε txt.
-13. `src/main/java/Pipeline.java`: ενιαία ροή (mapping -> upload -> queries).
-14. `pom.xml`: dependencies, Maven plugins, και έτοιμα execution profiles.
+13. `src/main/java/QueryRunner.java`: εκτέλεση queries και export σε txt.
+14. `src/main/java/Pipeline.java`: ενιαία ροή (mapping -> upload -> queries).
+15. `pom.xml`: dependencies, Maven plugins, και έτοιμα execution profiles.
 
 ## 3. Προαπαιτούμενα
 1. Java 17
@@ -44,7 +45,7 @@ Raw dataset (Excel)
 ## 4. GraphDB Setup (πριν τα commands)
 1. Άνοιξε GraphDB Workbench στο `http://localhost:7200`.
 2. Δημιούργησε repository με όνομα/ID `MiniProject`.
-3. Ενεργοποίησε reasoning ruleset στο repository (όχι `empty`), αν θέλεις να φαίνονται και inferred αποτελέσματα στο Query 4.
+3. Ενεργοποίησε reasoning ruleset στο repository (όχι `empty`) — απαιτείται για το Query 4 (`ex:actedIn` inferred από `dbo:starring`) και το Query 5 (`dbo:Person` inferred μέσω class hierarchy). Χωρίς reasoning αυτά τα queries επιστρέφουν 0 αποτελέσματα.
 
 ## 5. Εκτέλεση - Γρήγορη Έναρξη
 Αν θέλεις με τις default ρυθμίσεις να τρέξουν όλα:
@@ -133,11 +134,11 @@ mvn "exec:java@run-queries"
 
 ## 9. Query Set που Περιλαμβάνεται
 Το `queries/sparql_queries.txt` περιέχει:
-1. Films, Songs, Artists
-2. Films by Genre and Production Country
-3. Directors and Soundtracks
-4. Reasoning via inverse property (`ex:actedIn` από `dbo:starring`)
-5. People with Multiple Roles
+1. Films, Songs, Artists — με Wikipedia URLs για films και songs (`ex:url`)
+2. Films by Genre and Production Country — με Wikipedia URL για films, requires reasoning (`dbo:MovieGenre` → `dbo:Genre`)
+3. Directors and Soundtracks — με Wikipedia URLs για films και songs (`ex:url`)
+4. Reasoning via inverse property (`ex:actedIn` από `dbo:starring`) — με Wikipedia URL για films
+5. People with Multiple Roles — requires reasoning (`dbo:Person` inferred μέσω class hierarchy)
 
 ## 10. Έλεγχος Επιτυχίας
 Μετά από πλήρη εκτέλεση ελέγχεις:
