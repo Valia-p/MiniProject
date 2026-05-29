@@ -7,7 +7,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX dbo:  <http://dbpedia.org/ontology/>
 PREFIX ex:   <http://example.org/ontology/>
 
-SELECT DISTINCT ?film ?filmTitle ?song ?songTitle ?artist
+SELECT DISTINCT ?film ?filmTitle ?filmUrl ?song ?songTitle ?songUrl ?artist
 WHERE {
   ?film a dbo:Film ;
         ex:hasSong ?song .
@@ -18,7 +18,9 @@ WHERE {
   ?artist a dbo:MusicalArtist .
 
   OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?film ex:url ?filmUrl . }
   OPTIONAL { ?song dbo:title ?songTitle . }
+  OPTIONAL { ?song ex:url ?songUrl . }
 }
 ORDER BY ?film ?song ?artist
 LIMIT 100
@@ -33,7 +35,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX dbo:  <http://dbpedia.org/ontology/>
 PREFIX ex:   <http://example.org/ontology/>
 
-SELECT DISTINCT ?film ?filmTitle ?genre ?country
+SELECT DISTINCT ?film ?filmTitle ?filmUrl ?genre ?country
 WHERE {
   ?film a dbo:Film ;
         dbo:genre ?genre ;
@@ -43,6 +45,7 @@ WHERE {
   ?country a dbo:Country .
 
   OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?film ex:url ?filmUrl . }
 }
 ORDER BY ?filmTitle ?genre ?country
 LIMIT 200
@@ -57,7 +60,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX dbo:  <http://dbpedia.org/ontology/>
 PREFIX ex:   <http://example.org/ontology/>
 
-SELECT DISTINCT ?director ?film ?filmTitle ?song ?songTitle
+SELECT DISTINCT ?director ?film ?filmTitle ?filmUrl ?song ?songTitle ?songUrl
 WHERE {
   ?director a ex:Director .
 
@@ -68,7 +71,9 @@ WHERE {
   ?song a dbo:Song .
 
   OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?film ex:url ?filmUrl . }
   OPTIONAL { ?song dbo:title ?songTitle . }
+  OPTIONAL { ?song ex:url ?songUrl . }
 }
 ORDER BY ?director ?filmTitle ?songTitle
 LIMIT 150
@@ -83,7 +88,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX dbo:  <http://dbpedia.org/ontology/>
 PREFIX ex:   <http://example.org/ontology/>
 
-SELECT DISTINCT ?actor ?film ?filmTitle
+SELECT DISTINCT ?actor ?film ?filmTitle ?filmUrl
 WHERE {
   ?actor a dbo:Actor ;
          ex:actedIn ?film .
@@ -91,6 +96,7 @@ WHERE {
   ?film a dbo:Film .
 
   OPTIONAL { ?film dbo:title ?filmTitle . }
+  OPTIONAL { ?film ex:url ?filmUrl . }
 }
 ORDER BY ?actor ?filmTitle
 LIMIT 150

@@ -249,6 +249,15 @@
     
 
 
+    <!-- http://example.org/ontology/recordedAt -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology/recordedAt">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Song"/>
+        <rdfs:range rdf:resource="http://example.org/ontology/Studio"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://example.org/ontology/screenWriter -->
 
     <owl:ObjectProperty rdf:about="http://example.org/ontology/screenWriter">
@@ -444,6 +453,15 @@
     <owl:DatatypeProperty rdf:about="http://example.org/ontology/status">
         <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Film"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/ontology/url -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ontology/url">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Work"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
     </owl:DatatypeProperty>
     
 

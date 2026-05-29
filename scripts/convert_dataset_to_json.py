@@ -11,7 +11,10 @@ from typing import Any
 import pandas as pd
 
 SUPPORTED_EXTENSIONS = (".csv", ".xls", ".xlsx")
-NULL_TOKENS = {"", "unknown", "null", "none", "nan"}
+NULL_TOKENS = {
+    "", "unknown", "null", "none", "nan", "unknown_studio",
+    "it looks like we don't have any soundtracks for this title yet.",
+}
 
 # Date columns are serialized as ISO xsd:date lexical values.
 DATE_COLUMNS = {
@@ -86,6 +89,7 @@ IRI_SCALAR_FIELDS = {
     "courtesy_of",
     "under_license_from",
     "label",
+    "studio",
 }
 
 

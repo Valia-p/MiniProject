@@ -91,6 +91,17 @@
   rr:predicateObjectMap [
     rr:predicate ex:partOfFilm ;
     rr:objectMap [ rr:template "http://example.org/film/{imdb_id}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:recordedAt ;
+    rr:objectMap [ rr:template "http://example.org/studio/{studio_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:url ;
+    rr:objectMap [
+      rml:reference "song_url" ;
+      rr:datatype xsd:anyURI
+    ]
   ] .
 
 <#FilmMapping> a rr:TriplesMap ;
@@ -212,6 +223,13 @@
   rr:predicateObjectMap [
     rr:predicate ex:hasSong ;
     rr:objectMap [ rr:template "http://example.org/song/{song_slug}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:url ;
+    rr:objectMap [
+      rml:reference "movie_url" ;
+      rr:datatype xsd:anyURI
+    ]
   ] .
 
 <#MovieGenreClass> a rr:TriplesMap ;
@@ -465,5 +483,16 @@
   rr:subjectMap [
     rr:template "http://example.org/company/{under_license_from_slug}" ;
     rr:class ex:Licensor
+  ] .
+
+<#StudioClass> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/processed/soundtracks_clean.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$[*]"
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/studio/{studio_slug}" ;
+    rr:class ex:Studio
   ] .
 

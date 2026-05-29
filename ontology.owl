@@ -39,6 +39,7 @@ Declaration(Class(ex:SongContributor))
 Declaration(Class(ex:Songwriter))
 Declaration(Class(ex:Storywriter))
 Declaration(Class(ex:Studio))
+Declaration(ObjectProperty(ex:recordedAt))
 Declaration(ObjectProperty(dbo:artist))
 Declaration(ObjectProperty(dbo:composer))
 Declaration(ObjectProperty(dbo:country))
@@ -66,6 +67,7 @@ Declaration(ObjectProperty(ex:screenWriter))
 Declaration(ObjectProperty(ex:songWriter))
 Declaration(ObjectProperty(ex:spokenLanguage))
 Declaration(ObjectProperty(ex:storyWriter))
+Declaration(DataProperty(ex:url))
 Declaration(DataProperty(dbo:abstract))
 Declaration(DataProperty(dbo:budget))
 Declaration(DataProperty(dbo:comment))
@@ -199,6 +201,11 @@ ObjectPropertyRange(ex:originalLanguage dbo:Language)
 ObjectPropertyDomain(ex:partOfFilm dbo:Song)
 ObjectPropertyRange(ex:partOfFilm dbo:Film)
 
+# Object Property: ex:recordedAt (ex:recordedAt)
+
+ObjectPropertyDomain(ex:recordedAt dbo:Song)
+ObjectPropertyRange(ex:recordedAt ex:Studio)
+
 # Object Property: ex:productionCountry (ex:productionCountry)
 
 SubObjectPropertyOf(ex:productionCountry dbo:country)
@@ -263,6 +270,11 @@ DataPropertyRange(dbo:runtime xsd:double)
 
 DataPropertyDomain(dbo:title dbo:Work)
 DataPropertyRange(dbo:title rdf:langString)
+
+# Data Property: ex:url (ex:url)
+
+DataPropertyDomain(ex:url dbo:Work)
+DataPropertyRange(ex:url xsd:anyURI)
 
 # Data Property: ex:adultOnly (ex:adultOnly)
 
